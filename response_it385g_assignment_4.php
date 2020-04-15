@@ -27,7 +27,7 @@
     } 
     print_r($_POST);
     //print_r($edition);
-    echo "<tr><th>Name</th><th>Type</th><th>Article</th>><th>DESCRIPTION</th><th>Article</th></tr>";
+    //echo "<tr><th>Name</th><th>Type</th><th>Article</th>><th>DESCRIPTION</th><th>Article</th></tr>";
     function startElement($parser, $entityname, $attributes) {
       if($entityname=="ARTICLES"){
       }else if($entityname=="NEWSPAPER"){
