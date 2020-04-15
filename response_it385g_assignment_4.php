@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+  div {
+    width:500px;
+    
+    border:1px solid black;
+  }
+  h3 {
+    color:lightcoral;
+    width:300px;
+  }
+  </style>
 </head>
 <body>
   <pre>
@@ -16,31 +27,52 @@
     } 
     print_r($_POST);
     //print_r($edition);
+    echo "<tr><th>Name</th><th>Type</th><th>Article</th>><th>DESCRIPTION</th><th>Article</th></tr>";
     function startElement($parser, $entityname, $attributes) {
-      if($entityname=="ARTICLE"){
+      if($entityname=="ARTICLES"){
+      }else if($entityname=="NEWSPAPER"){
         echo "<tr>";
-        echo "<td>".$attributes['ID']."</td>";
-        echo "<td>".$attributes['TIME']."</td>";
-        echo "<td>".$attributes['DESCRIPTION']."</td>";
-        echo "<td><table>";
-      }else if($entityname==""){
-        echo "<tr>";
-        echo "<td>".$attributes['TYPE => Morning_edition']."</td>";
+        echo "<td>";
+        echo $attributes['NAME'];
+        echo "</td>";
+        echo "<td>";
+        echo $attributes['TYPE'];
+        echo "</td>";
         echo "<td><table>";      
-    }
+      }else if($entityname=="ARTICLE"){
+        echo "<tr>";
+        echo "<td>";
+        echo $attributes['ID'];
+        echo "</td>";
+        echo "<td>";
+        echo $attributes['DESCRIPTION'];
+        echo "</td>";
+        echo "<td>";
+      }else if($entityname=="HEADING"){
+        echo "<h3>";
+      }else if($entityname=="STORY"){
+        echo "<div>";
+      }
      //echo $entityname;
      }
      
     function endElement($parser, $entityname) {
-      if($entityname=="ARTICLE"){
-        echo "</table></td>";
-        echo "</tr>";
-      }else if($entityname==""){
+      if($entityname=="NEWSPAPER"){
+        echo "</table></td></tr>";
+      }else if($entityname=="ARTICLE"){
+        //echo "</td><td><table>";
         echo "</td></tr>";
+      }else if($entityname=="HEADING"){  
+          echo "</h3>";
+      }else if($entityname=="STORY"){  
+        echo "</div>";
       }
-     }
+    }
      
     function charData($parser, $chardata) {
+      $chardata=trim($chardata);
+       if($chardata=="") return; 
+       echo $chardata;
      }
      
      $parser = xml_parser_create();
