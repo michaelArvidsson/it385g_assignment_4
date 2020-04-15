@@ -11,16 +11,13 @@
 
       border: 1px solid black;
     }
-
     h3 {
       color: lightcoral;
       width: 300px;
     }
   </style>
 </head>
-
 <body>
-  <pre>
 <table border='1'>
 <?php
 if (isset($_POST['NEWSPAPER'])) {
@@ -28,9 +25,11 @@ if (isset($_POST['NEWSPAPER'])) {
 } else {
   $edition = "";
 }
+/*echo "<pre>";
 print_r($_POST);
+echo "</pre>";*/
 //print_r($edition);
-//echo "<tr><th>Name</th><th>Type</th><th>Article</th>><th>DESCRIPTION</th><th>Article</th></tr>";
+echo "<tr><th>Name</th><th>Type</th><th>Article</th></tr>";
 function startElement($parser, $entityname, $attributes)
 {
   if ($entityname == "ARTICLES") {
@@ -98,7 +97,6 @@ xml_parser_free($parser);
 
 ?>
 </table>
-    </pre>
 </body>
 
 </html>
