@@ -10,7 +10,7 @@
     <form method="POST" action="response_it385g_assignment_4.php" >
     <select name='NEWSPAPER'>
 <?php                                                                                                                                                 
-        echo "<option value='Empty_Paper'>---";
+        echo "<option value=''>---";
     function startElement($parser, $entityname, $attributes) {
       if($entityname=="NEWSPAPER"){
         echo "<option value='".$attributes['TYPE']."'>";
