@@ -8,6 +8,19 @@
   <style>
     body {
       background-color: slategray;
+      margin:0px;
+    }
+    #head {
+        background-color: #e2ddeb;;
+        color:darkslategrey;
+        font-size: 200%;
+        font-weight: bold;
+        letter-spacing: 5px;
+        text-align: center;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+        padding:10px;
+        margin-top:0px;
+        margin-bottom:20px;
     }
     table {
       background-color: #e2ddeb;
@@ -26,7 +39,7 @@
       /* border: 1px solid black; */
       margin: 10px;
       padding: 10px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 5px 15px 0px rgba(0, 0, 0, 0.6);
     }
     #tbl2 {
       font-weight:normal;
@@ -37,6 +50,7 @@
       color: darkslategray;
       text-align:center;
       text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+      margin-bottom:0px;
     }
     p {
       color: darkslategrey;
@@ -48,6 +62,7 @@
   </style>
 </head>
 <body>
+<h1 id='head'>Newspaper article database</h1>
 <table id=tbl border='1'>
 <?php
     //check value from form
