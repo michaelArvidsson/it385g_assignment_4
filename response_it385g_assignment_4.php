@@ -25,6 +25,7 @@
     table {
       background-color: #e2ddeb;
       margin: auto;
+      border-collapse: collapse;
     }
 
     #tbl {
@@ -76,20 +77,26 @@
 
     $lastelement="";
 
-    echo "<tr><th>Name</th><th>Subscribers</th><th>Type</th><th>Article</th></tr>";
+    //echo "<tr><th>Name</th><th>Subscribers</th><th>Type</th><th>Article</th></tr>";
     function startElement($parser, $entityname, $attributes){
       global $lastelement;
       if ($entityname == "ARTICLES") {
       } else if ($entityname == "NEWSPAPER") {
           echo "<tr>";
           echo "<td style='font-weight:bold; padding:5px;'>";
+          echo "<h4 style='transform: rotate(-90deg);'>";
           echo $attributes['NAME'];
+          echo "</h4>";
           echo "</td>";
           echo "<td style='font-weight:bold; padding:5px;'>";
+          echo "<h4 style='transform: rotate(-90deg);'>";
           echo $attributes['SUBSCRIBERS'];
+          echo "</h4>";
           echo "</td>";
           echo "<td style='font-weight:bold; padding:5px;'>";
+          echo "<h4 style='transform: rotate(-90deg);'>";
           echo $attributes['TYPE'];
+          echo "</h4>";
           echo "</td>";
           echo "<td><table>";
           echo "<tr><th id='tbl2'>ID</th><th id='tbl2'>Description</th><th id='tbl2'>Article name</th></tr>";
