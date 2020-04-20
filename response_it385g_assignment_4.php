@@ -27,7 +27,6 @@
       margin: auto;
       border-collapse: collapse;
     }
-
     #tbl {
       box-shadow: 2px 3px 3px 2px;
     }
@@ -35,7 +34,7 @@
       font-size: 25px;
       padding:0px;
     }
-    div {
+    #article {
       width: 500px;
       /* border: 1px solid black; */
       margin: 10px;
@@ -52,14 +51,17 @@
       text-align:center;
       text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
       margin-bottom:0px;
+      margin-top:10px;
+    }
+    h4 {
+      color:darkslategrey;
     }
     p {
       color: darkslategrey;
       box-shadow: 0px 0px 3px 0px grey;
       margin-top:0px;
-      margin-bottom: 10px;
-    }
-    
+      margin-bottom: 20px;
+    }  
   </style>
 </head>
 <body>
@@ -77,29 +79,21 @@
 
     $lastelement="";
 
-    //echo "<tr><th>Name</th><th>Subscribers</th><th>Type</th><th>Article</th></tr>";
     function startElement($parser, $entityname, $attributes){
       global $lastelement;
       if ($entityname == "ARTICLES") {
       } else if ($entityname == "NEWSPAPER") {
           echo "<tr>";
-          echo "<td style='font-weight:bold; padding:5px;'>";
-          echo "<h4 style='transform: rotate(-90deg);'>";
+          echo "<td style='padding:5px; border-right:0px;'>";
+          echo "<h4 style='transform: rotate(-90deg); font-size: 25px;'>";
           echo $attributes['NAME'];
-          echo "</h4>";
-          echo "</td>";
-          echo "<td style='font-weight:bold; padding:5px;'>";
-          echo "<h4 style='transform: rotate(-90deg);'>";
+          echo "</td>"; 
+          echo "<td style='padding:5px; border-right:0px;'>";
+          echo "<h4 style='white-space:nowrap;'>Subscribers: ";
           echo $attributes['SUBSCRIBERS'];
-          echo "</h4>";
-          echo "</td>";
-          echo "<td style='font-weight:bold; padding:5px;'>";
-          echo "<h4 style='transform: rotate(-90deg);'>";
+          echo "<h4 style='white-space:nowrap;'>Edition: ";
           echo $attributes['TYPE'];
-          echo "</h4>";
-          echo "</td>";
-          echo "<td><table>";
-          echo "<tr><th id='tbl2'>ID</th><th id='tbl2'>Description</th><th id='tbl2'>Article name</th></tr>";
+          echo "<td style='border-left:0px;'><table>";
       } else if ($entityname == "ARTICLE") {
         //conditional styling
           if($attributes['DESCRIPTION']=="News"){
@@ -108,29 +102,39 @@
                 echo "<tr style='background:#acd1a7;' >";          
           }
           echo "<td style='padding:5px; border:1px solid black;'>";
-          echo $attributes['ID'];
-          echo "</td>";
-          echo "<td style='text-align:center; border:1px solid black;'>";
+          echo "<span style='color:darkslategrey; margin-left:15px;margin-right:160px;'>";
           echo $attributes['DESCRIPTION'];
-          echo "</td>";
-          echo "<td style='border:1px solid black;'>";
+          echo "</span>";
+          echo "<span style='color:darkslategrey; margin-right:auto; margin-left:auto;'>";
+          echo $attributes['TIME'];
+          echo "</span>";
+          echo "<span style='color:darkslategrey; margin-left:150px;'>ID: ";
+          echo $attributes['ID'];
+          echo "</span>";
+          echo"<div id='article'>";
       } else if ($entityname == "HEADING") {
           echo "<h3>";
       } else if ($entityname == "STORY") {
-          echo "<div><p>";
+          echo "<p>";
       }
       if($entityname!="TEXT") $lastelement=$entityname;
     }
       
     function endElement($parser, $entityname){
       if ($entityname == "NEWSPAPER") {
-          echo "</table></td></tr>";
+          echo "</div></table></td></tr>";
+      } else if ($entityname == "NAME") {
+          echo "</h4>";
+      } else if ($entityname == "TYPE") {
+          echo "</h4>";
+      } else if ($entityname == "SUBSCRIBERS") {
+          echo "</h4></td>";
       } else if ($entityname == "ARTICLE") {
           echo "</td></tr>";
       } else if ($entityname == "HEADING") {
           echo "</h3>";
       } else if ($entityname == "STORY") {
-          echo "</p></div>";
+          echo "</p>";
       }
     }
 
